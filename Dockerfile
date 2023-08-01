@@ -51,6 +51,7 @@ RUN apt-get update -y && apt-get install -y libbtrfs-dev libseccomp-dev && \
     git clone -b ${CONTAINERD_VERSION} --depth 1 \
       https://github.com/pdtpartners/containerd $GOPATH/src/github.com/containerd/containerd && \
     cd $GOPATH/src/github.com/containerd/containerd && \
+    echo 'replace github.com/containerd/containerd => github.com/pdtpartners/containerd v1.0.2-stargz' >> go.mod && \
     echo 'require github.com/containerd/stargz-snapshotter v0.0.0' >> go.mod && \
     echo 'replace github.com/containerd/stargz-snapshotter => '$GOPATH'/src/github.com/containerd/stargz-snapshotter' >> go.mod && \
     echo 'replace github.com/containerd/stargz-snapshotter/estargz => '$GOPATH'/src/github.com/containerd/stargz-snapshotter/estargz' >> go.mod && \
